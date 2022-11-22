@@ -1,9 +1,19 @@
 'use strict';
 
 const upload_file = async (req, res) => {
-  console.log('Upload succesful: ', req.body, req.file);
-  res.json(req.body);
-  //TODO: Upload files in MongoDB
+  if (!req.file) {
+    res.json('no data');
+    console.log('no data');
+  } else {
+    console.log('Upload succesful: ', req.file);
+    res.json(req.file.destination + req.file.filename);
+    //TODO: Upload files in MongoDB
+  }
 };
 
-module.exports = { upload_file };
+const upload_formdata = async (req, res) => {
+  console.log('Formdata uploaded: ', req.body);
+  res.json(req.body);
+};
+
+module.exports = { upload_file, upload_formdata };
