@@ -12,7 +12,9 @@ const upload_file = async (req, res) => {
 
 const upload_formdata = async (req, res) => {
   console.log('Formdata uploaded: ', req.body);
-  res.json(req.body);
+  let data = JSON.parse(req.body.inputdata);
+  console.log(data);
+  res.json(data);
   //TODO: Upload files in MongoDB
 };
 
