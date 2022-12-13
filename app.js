@@ -6,23 +6,12 @@ const uploadRoute = require('./routes/uploadRoute');
 const app = express();
 const mongoose = require('mongoose');
 const port = 3001;
+const connectDB = require('./db/db.js');
 
 app.use(cors());
-
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.DB_URI, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
+app.use('/upload', uploadRoute);
 
 connectDB();
-
-app.use('/upload', uploadRoute);
 
 mongoose.connection.once('open', () => {
   console.log('MongoDB connected');

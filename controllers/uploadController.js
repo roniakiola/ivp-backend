@@ -26,4 +26,21 @@ const upload_formdata = async (req, res) => {
   console.log('New Data Saved succesfully');
 };
 
-module.exports = { upload_file, upload_formdata };
+const get_all_files = async (req, res) => {
+  const result = await videoData.find();
+  console.log(result[0]);
+  res.json(result);
+};
+
+const get_single_file = async (req, res) => {
+  const result = await videoData.findById(req.params.id);
+  console.log(result);
+  res.json(result);
+};
+
+module.exports = {
+  upload_file,
+  upload_formdata,
+  get_all_files,
+  get_single_file,
+};
