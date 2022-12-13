@@ -10,6 +10,7 @@ const connectDB = require('./db/db.js');
 
 app.use(cors());
 app.use('/upload', uploadRoute);
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 connectDB();
 

@@ -11,7 +11,7 @@ const upload_file = async (req, res) => {
     console.log('no data');
   } else {
     console.log('Upload succesful: ', req.file);
-    res.json(req.file.destination + req.file.filename);
+    res.json('http://localhost:3001/uploads/' + req.file.filename);
   }
 };
 
